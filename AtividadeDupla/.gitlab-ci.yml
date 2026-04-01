@@ -1,0 +1,19 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - mvn clean compile
+
+test-job:
+  stage: test
+  script:
+    - mvn test
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploy realizado com sucesso!"
