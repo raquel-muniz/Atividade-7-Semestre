@@ -1,24 +1,17 @@
+image: maven:3.9.6-eclipse-temurin-17
+
 stages:
   - build
   - test
   - deploy
 
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-
-cache:
-  paths:
-    - .m2/repository
-
 build-job:
   stage: build
-  image: maven:3.9.6-eclipse-temurin-17
   script:
     - mvn clean compile
 
 test-job:
   stage: test
-  image: maven:3.9.6-eclipse-temurin-17
   script:
     - mvn test
   artifacts:
@@ -29,6 +22,6 @@ test-job:
 deploy-job:
   stage: deploy
   script:
-    - echo "Deploy simulado realizado com sucesso!"
+    - echo "Deploy simulado"
   only:
     - main
